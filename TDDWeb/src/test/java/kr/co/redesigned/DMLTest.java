@@ -51,9 +51,13 @@ public class DMLTest {
 	public int insertUser(User user) throws SQLException {
 		Connection conn = ds.getConnection();
 		
-		String sql = "insert into t_user values (?, ?, ?, ?, ?, ?, now())";
+		// 입력값에 사용된 물음표(?)를 인파라미터라고 함.
+		// 정확한 값을 나중에 채워주겠다는 뜻임. 
+		String sql = "insert into t_user values (?, ?, ?, ?, ?, ?, now())";	
 		
 		PreparedStatement pstmt = conn.prepareStatement(sql);
+		// 인파라미터 설정시 데이터 타입에 맞는 set메서드를 사용함 
+		// set메서드는 데이터 타입별로 다양하게 준비되어 있음
 		pstmt.setString(1, user.getId());    //sql ? 때문에 set해줘야한다.
 		pstmt.setString(2, user.getPwd());
 		pstmt.setString(3, user.getName());
@@ -61,7 +65,7 @@ public class DMLTest {
 		pstmt.setDate(5, new java.sql.Date(user.getBirth().getTime()));
 		pstmt.setString(6, user.getSns());
 		
-		int rowCnt = pstmt.executeUpdate();
+		int rowCnt = pstmt.executeUpdate();	// insert, update, delete 
 		
 		return rowCnt;
 
@@ -85,7 +89,7 @@ public class DMLTest {
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		pstmt.setString(1, id);
 		
-		ResultSet rs = pstmt.executeQuery();		//select
+		ResultSet rs = pstmt.executeQuery();		//select 
 		
 		if (rs.next()) {
 			User user = new User();
