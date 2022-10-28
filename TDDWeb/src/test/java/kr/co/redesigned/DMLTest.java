@@ -30,7 +30,7 @@ public class DMLTest {
 		assertTrue(conn != null);
 	}
 	
-	@Test
+	//@Test
 	public void insertUserTest() throws SQLException {
 		User user = new User("ezen", "0111", "ezen", "ezen@gmail.com", new Date(), "fb", new Date());
 		deleteAll();
@@ -70,7 +70,7 @@ public class DMLTest {
 		return rowCnt;
 
 	}
-	@Test
+	//@Test
 	public void selectUserTest() throws SQLException {
 		deleteAll();
 		User user = new User("ezen", "0111", "ezen", "ezen@gmail.com", new Date(), "fb", new Date());
@@ -106,6 +106,78 @@ public class DMLTest {
 		return null;
 	}
 	
+	//@Test
+	public void deleteUserTest() throws SQLException {
+		deleteAll();
+		int rowCnt = deleteUser("ezen");
+		assertTrue(rowCnt == 0);
+		
+		User user = new User("ezen4", "0111", "ezen4", "ezen@gmail.com", new Date(), "fb", new Date()); // Date 자바 유틸 패키지
+		rowCnt = insertUser(user);
+		assertTrue(rowCnt == 1);
+		
+		deleteUser(user.getId());
+		assertTrue(rowCnt ==1);
+		
+		assertTrue(selectUser(user.getId()) == null);
+		
+	}  
+	
+	
+	public int deleteUser(String id) throws SQLException {
+		Connection conn = ds.getConnection();
+		
+		String sql = "delete from t_user where id= ?";		// 실제로 DB에서 실행되는 쿼리문 
+		PreparedStatement pstmt = conn.prepareStatement(sql); 	// '?'를 실행해줘야 한다.
+		pstmt.setString(1, id);
+		
+//		int rowCnt = pstmt.executeUpdate();
+//		return rowCnt;
+		
+		return pstmt.executeUpdate();
+	
+	}
+	
+	@Test
+	public void updateUserTest() throws SQLException {
+		deleteAll();
+		User user = new User("ezen3", "0111", "ezen3", "ezen@gmail.com", new Date(), "fb", new Date()); // Date 자바 유틸 패키지
+		int rowCnt = insertUser(user);
+		assertTrue(rowCnt == 1);
+		
+		user.setPwd("0112");
+		user.setName("ezen6");
+		user.setEmail("ezen6@gamil.com");
+		rowCnt = updateUser(user);
+		assertTrue(rowCnt == 1);
+		
+//		User user2 = selectUser(user.getId());
+//		System.out.println("user = " + user);
+//		System.out.println("user2 = " + user2);
+//		assertTrue(user.equals(user2));
+	}
+	
+	
+	//매개변수로 받은 사용자 정보로 t_user 테이블을 update하는 메서드 
+	public int updateUser(User user) throws SQLException {
+		Connection conn = ds.getConnection(); 		// 커넥하는것이다.
+		String sql = "update t_user " +
+					"set pwd=?, name=?, email=?, birth=?, sns=?, reg_date=? "+
+					"where id =?";
+		
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, user.getPwd());
+		pstmt.setString(2, user.getName());
+		pstmt.setString(3, user.getEmail());
+		pstmt.setDate(4, new java.sql.Date(user.getBirth().getTime()));
+		pstmt.setString(5, user.getSns());
+		pstmt.setDate(6, new java.sql.Date(user.getBirth().getTime()));
+		pstmt.setString(7, user.getId());
+		
+		int rowCnt = pstmt.executeUpdate();
+		return rowCnt;
+		
+	}
 }
 
 
