@@ -10,7 +10,7 @@ public class DBConnectionTest {
 	
 	public static void main(String[] args) throws SQLException {
 		//데이터베이스 접속 정보 변수 선언 
-		String DB_URL = "jdbc:postgresql://localhost:5432/postgres";
+		String DB_URL = "jdbc:postgresql://localhost:5432/ezendb";
 		//DB의 사용자정보
 		String DB_USER = "postgres";
 		String DB_PASSWORD = "0111";
