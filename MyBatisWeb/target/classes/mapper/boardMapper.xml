@@ -5,4 +5,17 @@
 
 <mapper namespace="kr.co.heart.dao.BoardMapper">
 	
+	<sql id="selectFromBoard">
+		SELECT bno, title, content, writer, view_cnt, comment_cnt, reg_date
+		FROM t_board
+	</sql>
+	
+	<select id="select" parameterType="int" resultType="BoardDto">
+		<include refid="selectFromBoard"/>
+		where bno = #{bno}
+	</select>
+	
+	
+	
+	
 </mapper>

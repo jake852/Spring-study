@@ -23,6 +23,9 @@ public class BoardDto {
 	private int view_cnt;
 	private int comment_cnt;
 	private Date reg_date;
+	public BoardDto() {
+		this("","","");
+	}
 	
 	public BoardDto(String title, String content, String writer) {
 		//super();
