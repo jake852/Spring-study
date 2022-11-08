@@ -4,8 +4,9 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <c:set var="loginId" value="${sessionScope.id} " />
-<c:set var="loginout" value="${loginId==null ? 'Login': 'Logout' }" />
+<c:set var="loginout" value="${loginId==null ? 'Login': 'id:' += loginId }" />
 <c:set var="loginoutLink" value="${loginId==null ? '/login/login' : '/login/logout' }" />
+<!-- 로그인 했을때 SingUp 출력 X  -->
 <c:set var="SingUp" value="${loginId==null ? '': 'display:none' }" />
 
 <!DOCTYPE html>
