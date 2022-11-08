@@ -25,6 +25,23 @@ public class BoardController {
 	@Autowired
 	BoardService boardService;
 	
+	//2022.11.08 읽기추가
+	@GetMapping("/read")
+	public String read(Integer bno, Model m) {
+		try {
+			BoardDto boardDto = boardService.read(bno);
+			//m.addAttribute("boardDto", boardDto); //아래에 있는 문장과 동일
+			m.addAttribute(boardDto);	// 뷰에서 확인해주려고 모델에 저장 
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+			return "redirect:/board/list";
+		}
+		
+		return "board";
+	}
+	
+	
 	@GetMapping("/list")
 	public String list(@RequestParam(defaultValue = "1") Integer page, 
 					   @RequestParam(defaultValue = "10") Integer pageSize,
