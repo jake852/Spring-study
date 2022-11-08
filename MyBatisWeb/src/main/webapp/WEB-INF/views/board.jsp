@@ -41,6 +41,31 @@
 			padding-bottom: 10px;
 			border-bottom: 1px solid #323232;
 		}
+		
+		.frm {
+			width: 100%;
+		}
+		
+		input{
+			width: 100%;
+			height: 35px;
+			margin: 5px 0px 10px 0px;
+			border: 1px solid #e9e8e8;
+			padding: 8px;
+			background: #f8f8f8;
+			outline-color : #e6e6e6;
+		}
+		
+		textarea {
+			width: 100%;
+			background: #f8f8f8;
+			margin: 5px 0px 10px 0px;
+			border: 1px solid #e9e8e8;
+			resize: none;
+			padding: 8px;
+			outline-color : #e6e6e6;
+		}
+		
 	</style>
 </head>
 <body>
@@ -61,7 +86,12 @@
 	</script>
 	
 	<div class="container">
-		<h2 class="writing-header">게시판</h2>
+		<h2 class="writing-header">게시판 ${mode=="new" ? "글쓰기" : "읽기" }</h2>
+		<form id="form" class="frm" action="post">		 
+			<input type="hidden" name="bno" value="${boardDto.bno }">
+			<input type="text" name="title" value="${boardDto.title }" ${mode=="new" ? "" : "readonly='readonly'" }><br/>
+			<textarea rows="20" name="content" ${mode=="new" ? "" : "readonly='readonly'" }>${boardDto.content }</textarea><br/>
+		</form>
 	</div>
 
 </body>
