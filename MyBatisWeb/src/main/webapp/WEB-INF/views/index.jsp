@@ -19,15 +19,15 @@
 </head>
 <body>
 	<div id="menu">
-        <ul>
-            <li id="logo">ezen</li>
-            <li><a href="<c:url value='/' />">Home</a></li>
-            <li><a href="<c:url value='/board/list' />">Board</a></li>
-            <li><a href="<c:url value='${loginoutlink }' />">${loginout }</a></li>
-            <li><a href="<c:url value='/register/add' />">SignUp</a></li>
-            <li><a href=""><i class="fa fa-search small"></i></a></li>
-        </ul>
-    </div>
+		<ul>
+			<li id="logo">ezen</li>
+			<li><a href="<c:url value='/' />">Home</a></li>
+			<li><a href="<c:url value='/board/list' />">Board</a></li>
+			<li><a href="<c:url value='${loginoutLink }' />">${loginout }</a></li>
+			<li style="${SingUp}"><a href="<c:url value='/register/add' />">${SingUp }</a></li>	
+			<li><a href=""><i class="fas fa-search small"></i></a></li>	
+		</ul>
+	</div>
 	<div style="text-align: center;">
 		<h1>세상을 바꾸는 HOME!</h1>
 		<h1>다음 세대에게 더 나은 세상을!</h1>
