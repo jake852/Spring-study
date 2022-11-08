@@ -109,16 +109,16 @@
 
 </head>
 <body>
-	<div id="menu">
-        <ul>
-            <li id="logo">ezen</li>
-            <li><a href="<c:url value='/' />">Home</a></li>
-            <li><a href="<c:url value='/board/list' />">Board</a></li>
-            <li><a href="<c:url value='${loginoutlink }' />">${loginout }</a></li>
-            <li><a href="<c:url value='/register/add' />">SignUp</a></li>
-            <li><a href=""><i class="fa fa-search small"></i></a></li>
-        </ul>
-    </div>
+		<div id="menu">
+		<ul>
+			<li id="logo">ezen</li>
+			<li><a href="<c:url value='/' />">Home</a></li>
+			<li><a href="<c:url value='/board/list' />">Board</a></li>
+			<li><a href="<c:url value='${loginoutLink }' />">${loginout }</a></li>
+			<li style="${SingUp}"><a href="<c:url value='/register/add' />">${SingUp }</a></li>	
+			<li><a href=""><i class="fa fa-search small"></i></a></li>	
+		</ul>
+	</div>
 	
 	<script type="text/javascript">
 		
@@ -145,7 +145,7 @@
 					<tr>
 						<td class="no">${boardDto.bno }</td>
 						<td class="title">
-							<a href="">
+							<a href="<c:url value="/board/read?bno=${boardDto.bno }" />">
 								${boardDto.title }
 							</a>
 						</td>
