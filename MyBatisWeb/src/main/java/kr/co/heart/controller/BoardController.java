@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -25,13 +26,25 @@ public class BoardController {
 	@Autowired
 	BoardService boardService;
 	
+	//2022.11.08 삭제추가
+	//@PostMapping("/remove")
+	public String remove(Integer bno, Integer page, Integer pageSize) {
+		
+		
+		
+		
+		return "redirect:/board/list";
+	}
+	
 	//2022.11.08 읽기추가
 	@GetMapping("/read")
-	public String read(Integer bno, Model m) {
+	public String read(Integer bno, Integer page, Integer pageSize, Model m) {
 		try {
 			BoardDto boardDto = boardService.read(bno);
 			//m.addAttribute("boardDto", boardDto); //아래에 있는 문장과 동일
 			m.addAttribute(boardDto);	// 뷰에서 확인해주려고 모델에 저장 
+			m.addAttribute("page", page);
+			m.addAttribute("pageSize", pageSize);
 			
 		}catch (Exception e) {
 			e.printStackTrace();
@@ -75,6 +88,8 @@ public class BoardController {
 			m.addAttribute("list", list);
 			m.addAttribute("pr", pageResolver);
 			
+			m.addAttribute("page", page);
+			m.addAttribute("pageSize", pageSize);
 			
 		} catch (Exception e) {
 			e.printStackTrace();

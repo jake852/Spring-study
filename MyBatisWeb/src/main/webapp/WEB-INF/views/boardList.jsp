@@ -146,7 +146,7 @@
 					<tr>
 						<td class="no">${boardDto.bno }</td>
 						<td class="title">
-							<a href="<c:url value="/board/read?bno=${boardDto.bno }" />">
+							<a href="<c:url value="/board/read?bno=${boardDto.bno }&page=${page}&pageSize=${pageSize}" />">
 								${boardDto.title }
 							</a>
 						</td>
