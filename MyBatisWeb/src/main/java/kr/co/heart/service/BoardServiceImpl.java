@@ -38,8 +38,14 @@ public class BoardServiceImpl implements BoardService {
 
 	@Override
     public int remove(Integer bno, String writer) throws Exception {
-        // TODO Auto-generated method stub
+
         return boardDao.delete(bno, writer);
+	}
+
+	@Override
+	public int write(BoardDto boardDto) throws Exception {
+
+		return boardDao.insert(boardDto);
 	}
 	
 	

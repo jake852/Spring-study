@@ -27,6 +27,38 @@ public class BoardController {
 	@Autowired
 	BoardService boardService;
 	
+	@PostMapping("/write")
+	public String write(BoardDto boardDto, RedirectAttributes rattr, Model m, HttpSession session) {
+        String writer = (String) session.getAttribute("id");
+        boardDto.setWriter(writer);
+	
+		
+        try {
+            if(boardService.write(boardDto) != 1) {
+                throw new Exception("Write failed");
+            }
+
+            rattr.addFlashAttribute("msg", "WRT_OK");
+            return "redirect:/board/list";    //board/list로 가기 때문에 그쪽에 넣어줘야 한다.(board.jsp)
+		
+		// 글쓰기가 취소 되었을때 글을 그대로 저장
+		}catch (Exception e) {
+			e.printStackTrace();
+			m.addAttribute("mode", "new");			// 글쓰기 모드
+			m.addAttribute(boardDto);        // m.addAttribute("boardDto", boardDto); "boardDto" 생략가능		// 등록하려던 내용을 보여줘야 함 (킵)	
+			m.addAttribute("msg", "WRT_ERR");
+			return "board";
+		}
+		
+	}
+	//2022.11.09 글쓰기
+	@GetMapping("/write")
+	public String write(Model m) {
+		m.addAttribute("mode", "new");
+		
+		return "board";			// board.jsp 읽기와 쓰기에 사용. 쓰기에 사용할때는 mode=new 
+	}
+	
 	//2022.11.08 삭제추가
 	@PostMapping("/remove")
 	public String remove(Integer bno, Integer page, Integer pageSize, RedirectAttributes rattr, HttpSession session) {

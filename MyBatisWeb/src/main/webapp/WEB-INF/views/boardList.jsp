@@ -104,6 +104,20 @@
 			
 		}
 		
+		.btn-write{
+			background-color: rgb(236,236,236);
+			border: none;
+			color: black;
+			padding: 6px 12px;
+			font-size: 16px;
+			cursor: pointer;
+			border-radius:5px;
+			margin-left: 30px;
+		}
+		
+		.btn-write:hover{
+			text-decoration: underline;
+		}
 		
 		
 	</style>
@@ -126,6 +140,7 @@
 		let msg = "${msg}"
 		if(msg == "DEL_OK") alert("성공적으로 삭제되었습니다.")
 		if(msg == "DEL_ERR") alert("삭제되었거나 없는 게시물입니다.")
+		if(msg == "WRT_OK") alert("성공적으로 등록되었습니다.")
 	</script>
 	
 	<div style="text-align: center;">
@@ -134,6 +149,11 @@
 				<form action="">
 				
 				</form>
+				
+				<button id="writeBtn" class="btn-write" 
+						onclick="location.href='<c:url value="/board/write"/>'" >
+						<i class="fa fa-pencil"></i>글쓰기
+				</button>
 			</div>
 			
 			<table>

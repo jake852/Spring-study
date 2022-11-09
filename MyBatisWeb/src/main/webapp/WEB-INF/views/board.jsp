@@ -109,10 +109,37 @@
                 form.submit()
             })
 			
+            $("#writeBtn").on("click", function() {
+				let form = $("#form");
+				form.attr("action", "<c:url value='/board/write' />")
+				form.attr("method", "post")
+				
+				if(formCheck())
+					form.submit()
+			})
+			//아무것도 입력하지 않았을때 alert창 출력
+            let formCheck = function() {
+				let form = document.getElementBtId("form")
+				if(form.title.value==""){
+					alert("제목을 입력해 주세요.")
+					form.title.focus()
+					return false
+				}
+				if(form.content.value==""){
+					alert("내용을 입력해 주세요.")
+					form.content.focus()
+					return false
+				}
+				return true;
+			}
 		})
 		
 	</script>
 	
+	<script type="text/javascript">
+		let msg = "${msg}"
+        if(msg == "WRT_ERR") alert("게시물 등록에 [실패] 하였습니다. 다시 시도해 주세요.")
+	</script>
 	<div class="container">
         <h2 class="writing-header" >게시판${mode=="new" ? "글쓰기" : "읽기" }</h2>
         <form id="form" class="frm" action="" method="post">
