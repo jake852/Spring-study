@@ -50,7 +50,12 @@
 		where bno = #{bno}
   	</update>
   	
+  	<update id="update" parameterType="BoardDto">
+  		UPDATE public.t_board
+		SET title=#{title}, "content"=#{content}, up_date =now()
+		WHERE bno=#{bno} and Writer = #{writer};
   	
+  	</update>
   	
   	
   </mapper>

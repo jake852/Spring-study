@@ -27,25 +27,48 @@ public class BoardController {
 	@Autowired
 	BoardService boardService;
 	
+	
+	//2022.11.09 수정하기
+	@PostMapping("/modify")
+	public String modify(BoardDto boardDto, Integer page, Integer pageSize,
+							RedirectAttributes rattr, Model m, HttpSession session) {
+		String writer = (String) session.getAttribute("id");
+		boardDto.setWriter(writer);
+		
+		try {
+			if(boardService.modify(boardDto) !=1)
+				throw new Exception("modify failed");
+			
+			rattr.addAttribute("page", page);
+			rattr.addAttribute("pageSize", pageSize);
+			rattr.addFlashAttribute("msg", "MOD_OK");
+			return "redirect:/board/list";
+		}catch(Exception e) {
+			e.printStackTrace();
+			m.addAttribute(boardDto);
+			m.addAttribute("page", page);
+			m.addAttribute("pageSize", pageSize);
+			m.addAttribute("msg", "MOD_ERR");
+			return "board";			// 수정등록하려면 내용을 보여줌 
+
+		}
+	}
+	
 	@PostMapping("/write")
 	public String write(BoardDto boardDto, RedirectAttributes rattr, Model m, HttpSession session) {
-        String writer = (String) session.getAttribute("id");
-        boardDto.setWriter(writer);
-	
+		String writer = (String) session.getAttribute("id");
+		boardDto.setWriter(writer);
 		
-        try {
-            if(boardService.write(boardDto) != 1) {
-                throw new Exception("Write failed");
-            }
-
-            rattr.addFlashAttribute("msg", "WRT_OK");
-            return "redirect:/board/list";    //board/list로 가기 때문에 그쪽에 넣어줘야 한다.(board.jsp)
-		
-		// 글쓰기가 취소 되었을때 글을 그대로 저장
-		}catch (Exception e) {
+		try {
+			if(boardService.write(boardDto) != 1)
+				throw new Exception("Write failed");
+			
+			rattr.addFlashAttribute("msg", "WRT_OK");
+			return "redirect:/board/list";  //board/list로 가기 때문에 그쪽에 넣어줘야 한다.(board.jsp
+		} catch (Exception e) {
 			e.printStackTrace();
-			m.addAttribute("mode", "new");			// 글쓰기 모드
-			m.addAttribute(boardDto);        // m.addAttribute("boardDto", boardDto); "boardDto" 생략가능		// 등록하려던 내용을 보여줘야 함 (킵)	
+			m.addAttribute("mode", "new");					//글쓰기 모드
+			m.addAttribute(boardDto);			//m.addAttribute("boardDto", boardDto); "boardDto"생략가능 //등록하려던 내용을 보여줘야 함
 			m.addAttribute("msg", "WRT_ERR");
 			return "board";
 		}
@@ -56,7 +79,7 @@ public class BoardController {
 	public String write(Model m) {
 		m.addAttribute("mode", "new");
 		
-		return "board";			// board.jsp 읽기와 쓰기에 사용. 쓰기에 사용할때는 mode=new 
+		return "board";			// board.jsp 읽기와 쓰기에 사용. 쓰기에 사용할때는 mode=new
 	}
 	
 	//2022.11.08 삭제추가
