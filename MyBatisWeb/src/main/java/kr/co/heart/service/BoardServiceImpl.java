@@ -35,6 +35,12 @@ public class BoardServiceImpl implements BoardService {
 		
 		return boardDto;
 	}
+
+	@Override
+    public int remove(Integer bno, String writer) throws Exception {
+        // TODO Auto-generated method stub
+        return boardDao.delete(bno, writer);
+	}
 	
 	
 	
