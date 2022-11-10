@@ -40,7 +40,7 @@ public class BoardDaoImpl implements BoardDao{
 
 
 	@Override
-	public int deleleAll() throws Exception {
+	public int deleteAll() throws Exception {
 		// TODO Auto-generated method stub
 		return session.delete(namespace + "deleteAll");
 	}
