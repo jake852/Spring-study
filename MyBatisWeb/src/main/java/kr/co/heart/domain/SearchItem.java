@@ -14,8 +14,11 @@ public class SearchItem {
 		
 	}
 	
+	public SearchItem(Integer page, Integer pageSize) {	//키워드가 없어도 검색이 되어야 하니까 	
+		this(page, pageSize, "", "");
+	}
 	
-	public SearchItem(Integer page, Integer pageSize, String option, String keyword, Integer offset) {
+	public SearchItem(Integer page, Integer pageSize, String option, String keyword) {
 		//super();
 		this.page = page;
 		this.pageSize = pageSize;

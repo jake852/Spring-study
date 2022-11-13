@@ -18,15 +18,24 @@ public class PageResolver {
 	
 	
 	public PageResolver(int totalCnt, Integer page) {
-		this(totalCnt, page, 10);
+		this(totalCnt, new SearchItem(page, 10));  //this()가 밑의 pageResolver(int totalCnt, SearchItem sc)을 호출한다.
 	}
 	
 	public PageResolver(int totalCnt, Integer page, Integer pageSize ) {
-		this.totalCnt = totalCnt;
-
+		this(totalCnt, new SearchItem(page, pageSize));
+	}
 	
-		this.totalPage = (int)Math.ceil(totalCnt/(double)pageSize);			// 전체 페이지 갯수
-		this.beginPage = (page-1) / NAV_SIZE * NAV_SIZE +1;				// 첫 페이지 숫자
+	public PageResolver(int totalCnt, SearchItem sc) {
+		this.totalCnt = totalCnt;
+		this.sc = sc;
+		
+		doPaging(totalCnt, sc);
+	}
+	
+	public void doPaging(int tatalCnt, SearchItem sc) {
+		
+		this.totalPage = (int)Math.ceil(totalCnt/(double)getPageSize());			// 전체 페이지 갯수
+		this.beginPage = (getPage()-1) / NAV_SIZE * NAV_SIZE +1;				// 첫 페이지 숫자
 		this.endPage = Math.min(this.beginPage + this.NAV_SIZE -1, totalPage);		// 마지막 페이지 숫자
 		this.showPrev = beginPage != 1;
 		this.showNext = endPage != totalPage;	
