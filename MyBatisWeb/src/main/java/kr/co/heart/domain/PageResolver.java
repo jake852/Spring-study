@@ -2,12 +2,14 @@ package kr.co.heart.domain;
 
 public class PageResolver {
 
+	private SearchItem sc;
+	
 	private int totalCnt;				// 게시물 총 갯수
-	private int pageSize = 10;			// 한 페이지당 게시물 갯수
+	//private int pageSize = 10;			// 한 페이지당 게시물 갯수  , SearchItem에 있어서 굳이 없어도된다.
 	public final int NAV_SIZE = 10;		// page navigation size
 	
 	private int totalPage;				// 전체 페이지 갯수
-	private int page;					// 현재 페이지
+	//private int page;					// 현재 페이지  , SearchItem에 있어서 굳이 없어도된다.
 
 	private int beginPage;				// 화면에 보여줄 첫 페이지
 	private int endPage;				// 화면에 보여줄 마지막 페이지
@@ -21,8 +23,7 @@ public class PageResolver {
 	
 	public PageResolver(int totalCnt, Integer page, Integer pageSize ) {
 		this.totalCnt = totalCnt;
-		this.page = page;
-		this.pageSize = pageSize;
+
 	
 		this.totalPage = 
 				
@@ -50,6 +51,16 @@ public class PageResolver {
 		return "PageResolver [totalCnt=" + totalCnt + ", pageSize=" + pageSize + ", NAV_SIZE=" + NAV_SIZE
 				+ ", totalPage=" + totalPage + ", page=" + page + ", beginPage=" + beginPage + ", endPage=" + endPage
 				+ ", showNext=" + showNext + ", showPrev=" + showPrev + "]";
+	}
+
+	
+	
+	public SearchItem getSc() {
+		return sc;
+	}
+
+	public void setSc(SearchItem sc) {
+		this.sc = sc;
 	}
 
 	public int getTotalCnt() {

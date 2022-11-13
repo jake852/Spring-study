@@ -57,12 +57,10 @@ public class SearchItem {
 	}
 
 	public Integer getOffset() {
-		return offset;
+		return (page-1)*pageSize;
 	}
 
-	public void setOffset(Integer offset) {
-		this.offset = offset;
-	}
+
 
 	@Override
 	public String toString() {

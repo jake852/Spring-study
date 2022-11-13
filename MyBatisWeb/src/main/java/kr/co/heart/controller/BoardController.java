@@ -18,6 +18,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import kr.co.heart.domain.BoardDto;
 import kr.co.heart.domain.PageResolver;
+import kr.co.heart.domain.SearchItem;
 import kr.co.heart.service.BoardService;
 
 @Controller
@@ -127,8 +128,7 @@ public class BoardController {
 	
 	
 	@GetMapping("/list")
-	public String list(@RequestParam(defaultValue = "1") Integer page, 
-					   @RequestParam(defaultValue = "10") Integer pageSize,
+	public String list(SearchItem sc,
 						Model m,
 						HttpServletRequest request) {
 		
@@ -144,16 +144,9 @@ public class BoardController {
 			m.addAttribute("totalcnt", totalcnt);
 			
 			PageResolver pageResolver = new PageResolver(totalcnt, page, pageSize);
-			if(page < 0 || page > pageResolver.getTotalCnt()) {
-				page = 1;
-			}
-			if (pageSize < 0 || pageSize > 50) {
-				pageSize = 10;
-			}
 			
-			Map map = new HashMap();
-			map.put("offset", (page-1)*pageSize);
-			map.put("pageSize", pageSize);
+			
+
 			
 			List<BoardDto> list = boardService.getPage(map);
 			m.addAttribute("list", list);
