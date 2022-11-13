@@ -5,10 +5,6 @@ import java.util.Objects;
 
 public class BoardDto {
 
-	/*
-,	up_date			date default current_timestamp
-	 */
-	
 	private Integer bno;
 	private String title;
 	private String content;
@@ -18,11 +14,11 @@ public class BoardDto {
 	private Date reg_date;
 	
 	public BoardDto() {
-		this("","","");
+		this("", "", "");
 	}
 	
 	public BoardDto(String title, String content, String writer) {
-		super();
+		//super();
 		this.title = title;
 		this.content = content;
 		this.writer = writer;
@@ -107,6 +103,7 @@ public class BoardDto {
 		return "BoardDto [bno=" + bno + ", title=" + title + ", content=" + content + ", writer=" + writer
 				+ ", view_cnt=" + view_cnt + ", comment_cnt=" + comment_cnt + ", reg_date=" + reg_date + "]";
 	}
+	
 	
 	
 	

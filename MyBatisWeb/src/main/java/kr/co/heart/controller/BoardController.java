@@ -31,28 +31,28 @@ public class BoardController {
 	
 	//2022.11.09 수정하기
 	@PostMapping("/modify")
-	public String modify(BoardDto boardDto, Integer page, Integer pageSize,
-							RedirectAttributes rattr, Model m, HttpSession session) {
+	public String modify(BoardDto boardDto, Integer page, Integer pageSize, 
+						RedirectAttributes rattr, Model m, HttpSession session) {
 		String writer = (String) session.getAttribute("id");
 		boardDto.setWriter(writer);
 		
 		try {
-			if(boardService.modify(boardDto) !=1)
-				throw new Exception("modify failed");
+			if(boardService.modify(boardDto) != 1)
+				throw new Exception("Modify failed");
 			
 			rattr.addAttribute("page", page);
 			rattr.addAttribute("pageSize", pageSize);
 			rattr.addFlashAttribute("msg", "MOD_OK");
 			return "redirect:/board/list";
-		}catch(Exception e) {
+		} catch(Exception e) {
 			e.printStackTrace();
 			m.addAttribute(boardDto);
 			m.addAttribute("page", page);
 			m.addAttribute("pageSize", pageSize);
 			m.addAttribute("msg", "MOD_ERR");
-			return "board";			// 수정등록하려면 내용을 보여줌 
-
+			return "board";			// 수정등록하려던 내용을 보여줌
 		}
+		
 	}
 	
 	@PostMapping("/write")
@@ -113,12 +113,12 @@ public class BoardController {
 	public String read(Integer bno, Integer page, Integer pageSize, Model m) {
 		try {
 			BoardDto boardDto = boardService.read(bno);
-			//m.addAttribute("boardDto", boardDto); //아래에 있는 문장과 동일
-			m.addAttribute(boardDto);	// 뷰에서 확인해주려고 모델에 저장 
+			//m.addAttribute("boardDto", boardDto); 		//아래 문장과 동일
+			m.addAttribute(boardDto);				// 뷰에서 확인해주려고 모델에 저장 
 			m.addAttribute("page", page);
 			m.addAttribute("pageSize", pageSize);
 			
-		}catch (Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 			return "redirect:/board/list";
 		}
@@ -129,8 +129,8 @@ public class BoardController {
 	
 	@GetMapping("/list")
 	public String list(SearchItem sc,
-						Model m,
-						HttpServletRequest request) {
+					   Model m,
+					   HttpServletRequest request) {
 		
 		if(!loginCheck(request))
 			return "redirect:/login/login?toURL="+request.getRequestURL();
@@ -140,26 +140,22 @@ public class BoardController {
 //			if(page==null) page=1;
 //			if(pageSize==null) pageSize=10;
 			
-			int totalcnt = boardService.getCount();
-			m.addAttribute("totalcnt", totalcnt);
+			int totalCnt = boardService.getSearchResultCnt(sc);
+			m.addAttribute("totalCnt", totalCnt);
 			
-			PageResolver pageResolver = new PageResolver(totalcnt, page, pageSize);
+			PageResolver pageResolver = new PageResolver(totalCnt, sc);
 			
 			
-
-			
-			List<BoardDto> list = boardService.getPage(map);
+			List<BoardDto> list = boardService.getSearchResultPage(sc);
 			m.addAttribute("list", list);
 			m.addAttribute("pr", pageResolver);
 			
-			m.addAttribute("page", page);
-			m.addAttribute("pageSize", pageSize);
 			
-		} catch (Exception e) {
+		} catch(Exception e) {
 			e.printStackTrace();
 		}
 		
-		return "boardList";				// 로그인 한 상태, 게시판 목록 화면으로 이동
+		return "boardList";			//로그인 한 상태, 게시판 목록 화면으로 이동
 		
 	}
 

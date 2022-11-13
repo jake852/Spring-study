@@ -12,7 +12,7 @@ import kr.co.heart.domain.SearchItem;
 
 @Service
 public class BoardServiceImpl implements BoardService {
-	
+
 	@Autowired
 	BoardDao boardDao;
 
@@ -38,21 +38,21 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-    public int remove(Integer bno, String writer) throws Exception {
-
-        return boardDao.delete(bno, writer);
+	public int remove(Integer bno, String writer) throws Exception {
+		
+		return boardDao.delete(bno, writer);
 	}
 
 	@Override
 	public int write(BoardDto boardDto) throws Exception {
-
+		
 		return boardDao.insert(boardDto);
 		//throw new Exception();
 	}
 
 	@Override
 	public int modify(BoardDto boardDto) throws Exception {
-		
+		// TODO Auto-generated method stub
 		return boardDao.update(boardDto);
 	}
 
@@ -63,8 +63,7 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public List<BoardDto> getsearchResultPage(SearchItem sc) throws Exception {
-		
+	public List<BoardDto> getSearchResultPage(SearchItem sc) throws Exception {
 		return boardDao.searchSelectPage(sc);
 	}
 	
