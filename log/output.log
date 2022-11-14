@@ -1,0 +1,90 @@
+[14:40:09][INFO ](ContextLoader.java:271)-Root WebApplicationContext: initialization started
+[14:40:10][DEBUG](UiApplicationContextUtils.java:85)-Unable to locate ThemeSource with name 'themeSource': using default [org.springframework.ui.context.support.ResourceBundleThemeSource@5b31a9e3]
+[14:40:10][DEBUG](DriverManagerDataSource.java:134)-Loaded JDBC driver: org.postgresql.Driver
+[14:40:10][DEBUG](LogFactory.java:109)-Logging initialized using 'class org.apache.ibatis.logging.slf4j.Slf4jImpl' adapter.
+[14:40:10][DEBUG](Logger.java:49)-Parsed configuration file: 'class path resource [mybatis-config.xml]'
+[14:40:10][DEBUG](Logger.java:49)-Parsed mapper file: 'class path resource [mapper/boardMapper.xml]'
+[14:40:10][DEBUG](JndiTemplate.java:155)-Looking up JNDI object with name [java:comp/env/spring.liveBeansView.mbeanDomain]
+[14:40:10][DEBUG](JndiLocatorSupport.java:102)-Converted JNDI name [java:comp/env/spring.liveBeansView.mbeanDomain] not found - trying original name [spring.liveBeansView.mbeanDomain]. javax.naming.NameNotFoundException: Name [spring.liveBeansView.mbeanDomain]은(는) 이 컨텍스트에 바인딩되지 않았습니다. [spring.liveBeansView.mbeanDomain]을(를) 찾을 수 없습니다.
+[14:40:10][DEBUG](JndiTemplate.java:155)-Looking up JNDI object with name [spring.liveBeansView.mbeanDomain]
+[14:40:10][DEBUG](JndiPropertySource.java:101)-JNDI lookup for name [spring.liveBeansView.mbeanDomain] threw NamingException with message: Name [spring.liveBeansView.mbeanDomain]은(는) 이 컨텍스트에 바인딩되지 않았습니다. [spring.liveBeansView.mbeanDomain]을(를) 찾을 수 없습니다.. Returning null.
+[14:40:10][INFO ](ContextLoader.java:307)-Root WebApplicationContext initialized in 1707 ms
+[14:40:10][INFO ](FrameworkServlet.java:525)-Initializing Servlet 'appServlet'
+[14:40:10][DEBUG](JndiTemplate.java:155)-Looking up JNDI object with name [java:comp/env/spring.profiles.active]
+[14:40:10][DEBUG](JndiLocatorSupport.java:102)-Converted JNDI name [java:comp/env/spring.profiles.active] not found - trying original name [spring.profiles.active]. javax.naming.NameNotFoundException: Name [spring.profiles.active]은(는) 이 컨텍스트에 바인딩되지 않았습니다. [spring.profiles.active]을(를) 찾을 수 없습니다.
+[14:40:10][DEBUG](JndiTemplate.java:155)-Looking up JNDI object with name [spring.profiles.active]
+[14:40:10][DEBUG](JndiPropertySource.java:101)-JNDI lookup for name [spring.profiles.active] threw NamingException with message: Name [spring.profiles.active]은(는) 이 컨텍스트에 바인딩되지 않았습니다. [spring.profiles.active]을(를) 찾을 수 없습니다.. Returning null.
+[14:40:10][DEBUG](JndiTemplate.java:155)-Looking up JNDI object with name [java:comp/env/spring.profiles.default]
+[14:40:10][DEBUG](JndiLocatorSupport.java:102)-Converted JNDI name [java:comp/env/spring.profiles.default] not found - trying original name [spring.profiles.default]. javax.naming.NameNotFoundException: Name [spring.profiles.default]은(는) 이 컨텍스트에 바인딩되지 않았습니다. [spring.profiles.default]을(를) 찾을 수 없습니다.
+[14:40:10][DEBUG](JndiTemplate.java:155)-Looking up JNDI object with name [spring.profiles.default]
+[14:40:10][DEBUG](JndiPropertySource.java:101)-JNDI lookup for name [spring.profiles.default] threw NamingException with message: Name [spring.profiles.default]은(는) 이 컨텍스트에 바인딩되지 않았습니다. [spring.profiles.default]을(를) 찾을 수 없습니다.. Returning null.
+[14:40:11][DEBUG](UiApplicationContextUtils.java:85)-Unable to locate ThemeSource with name 'themeSource': using default [org.springframework.ui.context.support.DelegatingThemeSource@7603cfc2]
+[14:40:12][DEBUG](JndiTemplate.java:155)-Looking up JNDI object with name [java:comp/env/spring.liveBeansView.mbeanDomain]
+[14:40:12][DEBUG](JndiLocatorSupport.java:102)-Converted JNDI name [java:comp/env/spring.liveBeansView.mbeanDomain] not found - trying original name [spring.liveBeansView.mbeanDomain]. javax.naming.NameNotFoundException: Name [spring.liveBeansView.mbeanDomain]은(는) 이 컨텍스트에 바인딩되지 않았습니다. [spring.liveBeansView.mbeanDomain]을(를) 찾을 수 없습니다.
+[14:40:12][DEBUG](JndiTemplate.java:155)-Looking up JNDI object with name [spring.liveBeansView.mbeanDomain]
+[14:40:12][DEBUG](JndiPropertySource.java:101)-JNDI lookup for name [spring.liveBeansView.mbeanDomain] threw NamingException with message: Name [spring.liveBeansView.mbeanDomain]은(는) 이 컨텍스트에 바인딩되지 않았습니다. [spring.liveBeansView.mbeanDomain]을(를) 찾을 수 없습니다.. Returning null.
+[14:40:12][INFO ](FrameworkServlet.java:547)-Completed initialization in 1076 ms
+[14:40:25][DEBUG](DriverManagerDataSource.java:144)-Creating new JDBC DriverManager Connection to [jdbc:postgresql://localhost:5432/ezendb]
+[14:40:26][DEBUG](Logger.java:49)-Creating a new SqlSession
+[14:40:26][DEBUG](Logger.java:49)-SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@74bfa24b] was not registered for synchronization because synchronization is not active
+[14:40:26][DEBUG](DataSourceUtils.java:115)-Fetching JDBC Connection from DataSource
+[14:40:26][DEBUG](DriverManagerDataSource.java:144)-Creating new JDBC DriverManager Connection to [jdbc:postgresql://localhost:5432/ezendb]
+[14:40:26][DEBUG](Logger.java:49)-JDBC Connection [org.postgresql.jdbc.PgConnection@1a8cc433] will not be managed by Spring
+[14:40:26][DEBUG](BaseJdbcLogger.java:137)-==>  Preparing: select count(*) from t_board where true AND (title LIKE concat('%', ?, '%') OR content LIKE concat('%', ?, '%'))
+[14:40:26][DEBUG](BaseJdbcLogger.java:137)-==> Parameters: (String), (String)
+[14:40:26][DEBUG](BaseJdbcLogger.java:137)-<==      Total: 1
+[14:40:26][DEBUG](Logger.java:49)-Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@74bfa24b]
+[14:40:26][DEBUG](Logger.java:49)-Creating a new SqlSession
+[14:40:26][DEBUG](Logger.java:49)-SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7a8ff977] was not registered for synchronization because synchronization is not active
+[14:40:26][DEBUG](DataSourceUtils.java:115)-Fetching JDBC Connection from DataSource
+[14:40:26][DEBUG](DriverManagerDataSource.java:144)-Creating new JDBC DriverManager Connection to [jdbc:postgresql://localhost:5432/ezendb]
+[14:40:26][DEBUG](Logger.java:49)-JDBC Connection [org.postgresql.jdbc.PgConnection@14b13f2c] will not be managed by Spring
+[14:40:26][DEBUG](BaseJdbcLogger.java:137)-==>  Preparing: select bno , title , "content" , writer , view_cnt , comment_cnt , reg_date from t_board where true AND (title LIKE concat('%', ?, '%') OR content LIKE concat('%', ?, '%')) order by reg_date desc, bno desc limit ? offset ?
+[14:40:26][DEBUG](BaseJdbcLogger.java:137)-==> Parameters: (String), (String), 10(Integer), 0(Integer)
+[14:40:26][DEBUG](BaseJdbcLogger.java:137)-<==      Total: 10
+[14:40:26][DEBUG](Logger.java:49)-Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7a8ff977]
+[14:41:45][INFO ](ContextLoader.java:271)-Root WebApplicationContext: initialization started
+[14:41:46][DEBUG](UiApplicationContextUtils.java:85)-Unable to locate ThemeSource with name 'themeSource': using default [org.springframework.ui.context.support.ResourceBundleThemeSource@5b31a9e3]
+[14:41:46][DEBUG](DriverManagerDataSource.java:134)-Loaded JDBC driver: org.postgresql.Driver
+[14:41:46][DEBUG](LogFactory.java:109)-Logging initialized using 'class org.apache.ibatis.logging.slf4j.Slf4jImpl' adapter.
+[14:41:47][DEBUG](Logger.java:49)-Parsed configuration file: 'class path resource [mybatis-config.xml]'
+[14:41:47][DEBUG](Logger.java:49)-Parsed mapper file: 'class path resource [mapper/boardMapper.xml]'
+[14:41:47][DEBUG](JndiTemplate.java:155)-Looking up JNDI object with name [java:comp/env/spring.liveBeansView.mbeanDomain]
+[14:41:47][DEBUG](JndiLocatorSupport.java:102)-Converted JNDI name [java:comp/env/spring.liveBeansView.mbeanDomain] not found - trying original name [spring.liveBeansView.mbeanDomain]. javax.naming.NameNotFoundException: Name [spring.liveBeansView.mbeanDomain]은(는) 이 컨텍스트에 바인딩되지 않았습니다. [spring.liveBeansView.mbeanDomain]을(를) 찾을 수 없습니다.
+[14:41:47][DEBUG](JndiTemplate.java:155)-Looking up JNDI object with name [spring.liveBeansView.mbeanDomain]
+[14:41:47][DEBUG](JndiPropertySource.java:101)-JNDI lookup for name [spring.liveBeansView.mbeanDomain] threw NamingException with message: Name [spring.liveBeansView.mbeanDomain]은(는) 이 컨텍스트에 바인딩되지 않았습니다. [spring.liveBeansView.mbeanDomain]을(를) 찾을 수 없습니다.. Returning null.
+[14:41:47][INFO ](ContextLoader.java:307)-Root WebApplicationContext initialized in 1720 ms
+[14:41:47][INFO ](FrameworkServlet.java:525)-Initializing Servlet 'appServlet'
+[14:41:47][DEBUG](JndiTemplate.java:155)-Looking up JNDI object with name [java:comp/env/spring.profiles.active]
+[14:41:47][DEBUG](JndiLocatorSupport.java:102)-Converted JNDI name [java:comp/env/spring.profiles.active] not found - trying original name [spring.profiles.active]. javax.naming.NameNotFoundException: Name [spring.profiles.active]은(는) 이 컨텍스트에 바인딩되지 않았습니다. [spring.profiles.active]을(를) 찾을 수 없습니다.
+[14:41:47][DEBUG](JndiTemplate.java:155)-Looking up JNDI object with name [spring.profiles.active]
+[14:41:47][DEBUG](JndiPropertySource.java:101)-JNDI lookup for name [spring.profiles.active] threw NamingException with message: Name [spring.profiles.active]은(는) 이 컨텍스트에 바인딩되지 않았습니다. [spring.profiles.active]을(를) 찾을 수 없습니다.. Returning null.
+[14:41:47][DEBUG](JndiTemplate.java:155)-Looking up JNDI object with name [java:comp/env/spring.profiles.default]
+[14:41:47][DEBUG](JndiLocatorSupport.java:102)-Converted JNDI name [java:comp/env/spring.profiles.default] not found - trying original name [spring.profiles.default]. javax.naming.NameNotFoundException: Name [spring.profiles.default]은(는) 이 컨텍스트에 바인딩되지 않았습니다. [spring.profiles.default]을(를) 찾을 수 없습니다.
+[14:41:47][DEBUG](JndiTemplate.java:155)-Looking up JNDI object with name [spring.profiles.default]
+[14:41:47][DEBUG](JndiPropertySource.java:101)-JNDI lookup for name [spring.profiles.default] threw NamingException with message: Name [spring.profiles.default]은(는) 이 컨텍스트에 바인딩되지 않았습니다. [spring.profiles.default]을(를) 찾을 수 없습니다.. Returning null.
+[14:41:48][DEBUG](UiApplicationContextUtils.java:85)-Unable to locate ThemeSource with name 'themeSource': using default [org.springframework.ui.context.support.DelegatingThemeSource@7603cfc2]
+[14:41:48][DEBUG](JndiTemplate.java:155)-Looking up JNDI object with name [java:comp/env/spring.liveBeansView.mbeanDomain]
+[14:41:48][DEBUG](JndiLocatorSupport.java:102)-Converted JNDI name [java:comp/env/spring.liveBeansView.mbeanDomain] not found - trying original name [spring.liveBeansView.mbeanDomain]. javax.naming.NameNotFoundException: Name [spring.liveBeansView.mbeanDomain]은(는) 이 컨텍스트에 바인딩되지 않았습니다. [spring.liveBeansView.mbeanDomain]을(를) 찾을 수 없습니다.
+[14:41:48][DEBUG](JndiTemplate.java:155)-Looking up JNDI object with name [spring.liveBeansView.mbeanDomain]
+[14:41:48][DEBUG](JndiPropertySource.java:101)-JNDI lookup for name [spring.liveBeansView.mbeanDomain] threw NamingException with message: Name [spring.liveBeansView.mbeanDomain]은(는) 이 컨텍스트에 바인딩되지 않았습니다. [spring.liveBeansView.mbeanDomain]을(를) 찾을 수 없습니다.. Returning null.
+[14:41:48][INFO ](FrameworkServlet.java:547)-Completed initialization in 1130 ms
+[14:42:14][DEBUG](DriverManagerDataSource.java:144)-Creating new JDBC DriverManager Connection to [jdbc:postgresql://localhost:5432/ezendb]
+[14:42:36][DEBUG](Logger.java:49)-Creating a new SqlSession
+[14:42:36][DEBUG](Logger.java:49)-SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@646fa97b] was not registered for synchronization because synchronization is not active
+[14:42:36][DEBUG](DataSourceUtils.java:115)-Fetching JDBC Connection from DataSource
+[14:42:36][DEBUG](DriverManagerDataSource.java:144)-Creating new JDBC DriverManager Connection to [jdbc:postgresql://localhost:5432/ezendb]
+[14:42:36][DEBUG](Logger.java:49)-JDBC Connection [org.postgresql.jdbc.PgConnection@eb03b2b] will not be managed by Spring
+[14:42:36][DEBUG](BaseJdbcLogger.java:137)-==>  Preparing: select count(*) from t_board where true AND (title LIKE concat('%', ?, '%') OR content LIKE concat('%', ?, '%'))
+[14:42:36][DEBUG](BaseJdbcLogger.java:137)-==> Parameters: (String), (String)
+[14:42:36][DEBUG](BaseJdbcLogger.java:137)-<==      Total: 1
+[14:42:36][DEBUG](Logger.java:49)-Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@646fa97b]
+[14:42:36][DEBUG](Logger.java:49)-Creating a new SqlSession
+[14:42:36][DEBUG](Logger.java:49)-SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7dc7c6c4] was not registered for synchronization because synchronization is not active
+[14:42:36][DEBUG](DataSourceUtils.java:115)-Fetching JDBC Connection from DataSource
+[14:42:36][DEBUG](DriverManagerDataSource.java:144)-Creating new JDBC DriverManager Connection to [jdbc:postgresql://localhost:5432/ezendb]
+[14:42:36][DEBUG](Logger.java:49)-JDBC Connection [org.postgresql.jdbc.PgConnection@44b88539] will not be managed by Spring
+[14:42:36][DEBUG](BaseJdbcLogger.java:137)-==>  Preparing: select bno , title , "content" , writer , view_cnt , comment_cnt , reg_date from t_board where true AND (title LIKE concat('%', ?, '%') OR content LIKE concat('%', ?, '%')) order by reg_date desc, bno desc limit ? offset ?
+[14:42:36][DEBUG](BaseJdbcLogger.java:137)-==> Parameters: (String), (String), 10(Integer), 0(Integer)
+[14:42:36][DEBUG](BaseJdbcLogger.java:137)-<==      Total: 10
+[14:42:36][DEBUG](Logger.java:49)-Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7dc7c6c4]
