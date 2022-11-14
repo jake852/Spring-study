@@ -15,7 +15,7 @@ public class SearchItem {
 	private Integer pageSize = DEFAULT_PAGE_SIZE;
 	private String option = "";
 	private String keyword = "";
-	private Integer offset;
+	//private Integer offset;
 	
 	public SearchItem() {
 		// TODO Auto-generated constructor stub
@@ -85,15 +85,16 @@ public class SearchItem {
 	}
 
 	public Integer getOffset() {
-		return (page-1)*pageSize;
+		int result = (page-1)*pageSize;
+		if (result < 0) result = 0;
+		return result;
 	}
 
 
 
 	@Override
 	public String toString() {
-		return "SearchItem [page=" + page + ", pageSize=" + pageSize + ", option=" + option + ", keyword=" + keyword
-				+ ", offset=" + offset + "]";
+		return "SearchItem [page=" + page + ", pageSize=" + pageSize + ", option=" + option + ", keyword=" + keyword + "]";
 	}
 	
 	

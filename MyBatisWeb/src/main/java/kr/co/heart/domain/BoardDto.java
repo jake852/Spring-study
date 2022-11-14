@@ -98,6 +98,9 @@ public class BoardDto {
 		this.reg_date = reg_date;
 	}
 
+	
+	
+	
 	@Override
 	public String toString() {
 		return "BoardDto [bno=" + bno + ", title=" + title + ", content=" + content + ", writer=" + writer
