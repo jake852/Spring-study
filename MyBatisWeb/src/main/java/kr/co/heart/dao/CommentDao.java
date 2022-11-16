@@ -6,10 +6,10 @@ import kr.co.heart.domain.CommentDto;
 
 public interface CommentDao {
 
-	int deleteAll(Integer bno) throws Exception;
+	int delete(Integer bno) throws Exception;
 
 	List<CommentDto> selectAll(Integer bno) throws Exception;
+
+	int delete(Integer cno, String commenter) throws Exception;
 	
-
-
 }

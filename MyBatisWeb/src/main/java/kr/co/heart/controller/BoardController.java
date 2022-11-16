@@ -29,6 +29,12 @@ public class BoardController {
 	BoardService boardService;
 	
 	
+	@GetMapping("/test")
+	public String test() {
+		
+		return "ezen/test2";			// board.jsp 읽기와 쓰기에 사용. 쓰기에 사용할때는 mode=new
+	}	
+	
 	//2022.11.09 수정하기
 	@PostMapping("/modify")
 	public String modify(BoardDto boardDto, Integer page, Integer pageSize, 

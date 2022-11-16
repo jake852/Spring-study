@@ -15,7 +15,7 @@ import java.util.Objects;
 */
 
 public class CommentDto {
-	private Integer con;
+	private Integer cno;
 	private Integer bno;
 	private Integer pcno;
 	private String comment;
@@ -23,9 +23,7 @@ public class CommentDto {
 	private Date reg_date;
 	private Date up_date;
 	
-	public CommentDto() {
-		
-	}
+	public CommentDto() {}
 
 	public CommentDto(Integer bno, Integer pcno, String comment, String commenter) {
 		//super();
@@ -35,12 +33,12 @@ public class CommentDto {
 		this.commenter = commenter;
 	}
 
-	public Integer getCon() {
-		return con;
+	public Integer getCno() {
+		return cno;
 	}
 
-	public void setCon(Integer con) {
-		this.con = con;
+	public void setCno(Integer cno) {
+		this.cno = cno;
 	}
 
 	public Integer getBno() {
@@ -93,13 +91,13 @@ public class CommentDto {
 
 	@Override
 	public String toString() {
-		return "CommentDto [con=" + con + ", bno=" + bno + ", pcno=" + pcno + ", comment=" + comment + ", commenter="
+		return "CommentDto [cno=" + cno + ", bno=" + bno + ", pcno=" + pcno + ", comment=" + comment + ", commenter="
 				+ commenter + ", reg_date=" + reg_date + ", up_date=" + up_date + "]";
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(bno, comment, commenter, con, pcno);
+		return Objects.hash(bno, cno, comment, commenter, pcno);
 	}
 
 	@Override
@@ -111,11 +109,10 @@ public class CommentDto {
 		if (getClass() != obj.getClass())
 			return false;
 		CommentDto other = (CommentDto) obj;
-		return Objects.equals(bno, other.bno) && Objects.equals(comment, other.comment)
-				&& Objects.equals(commenter, other.commenter) && Objects.equals(con, other.con)
+		return Objects.equals(bno, other.bno) && Objects.equals(cno, other.cno)
+				&& Objects.equals(comment, other.comment) && Objects.equals(commenter, other.commenter)
 				&& Objects.equals(pcno, other.pcno);
 	}
-	
 	
 	
 }

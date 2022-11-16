@@ -95,19 +95,19 @@
 	<script type="text/javascript">
 		$(document).ready(function() {			/*  main() */
 			
-			let bno = 263
+			let bno = 264
 			
 			let showList = function(bno) {
 				$.ajax({
-					type : 'GET',		//요청 메서드
+					type: 'GET',			//요청 메서드
 					url: '/heart/comments?bno='+bno,		// 요청 URI
-					success : function(result) {			// 서버로부터 응답이 도착하면 호출될 함수
-						$("#commentList").html(toHtml(result))		// result는 서버가 전송할 데이터					
+					success : function(result) {			// 서버로부터 응답이 도착하면 호출될 함수 
+						$("#commentList").html(toHtml(result))		// result는 서버가 전송한 데이터
 					},
-					error: fonction() { alert("error")}		// 에러가 발생할 때, 호출될 함수
+					error : function() { alert("error") }	// 에러가 발생할 때, 호출될 함수 
 				})
-			}
-		
+			}			
+			
 			let toHtml = function(comments) {
 				let tmp = "<ul>"
 				
@@ -115,19 +115,19 @@
 					tmp += '<li data-cno=' + comment.cno
 					tmp += ' data-bno=' + comment.bno
 					tmp += ' data-pcno=' + comment.pcno + '>'
-					tmp += ' commenter=<span class="commnenter">' + comment.commenter + '</span>'
-					tmp += ' comment=<span class="commnent">' + comment.comment + '</span>'
-					tmp += '<li>'			
+					tmp += ' commenter=<span class="commenter">' + comment.commenter + '</span>'
+					tmp += ' comment=<span class="comment">' + comment.comment + '</span>'
+					tmp += '</li>'
 				})
 				
 				return tmp += "</ul>"
-			}
+				
+			}		
 			
 			$("#sendBtn").click(function() {
 				showList(bno)
-			})
+			})			
 			
-			//이곳에 이벤트 처리를 넣으면 된다.
 			$("#listBtn").on("click", function() {
 				location.href ="<c:url value='/board/list${searchItem.queryString}' />";
 			})
@@ -149,9 +149,8 @@
 				if(formCheck())
 					form.submit()					
 			})
-           
-			//아무것도 입력하지 않았을때 alert창 출력
-           	let formCheck = function() {
+			
+			let formCheck = function() {
 				let form = document.getElementById("form")
 				if(form.title.value=="") {
 					alert("제목을 입력해 주세요.")
@@ -166,7 +165,6 @@
 				return true;
 			}
 		
-			
 			$("#modifyBtn").on("click", function() {
 				let form = $("#form")
 				let isReadonly = $("input[name=title]").attr('readonly')
@@ -219,9 +217,10 @@
 		<button id="sendBtn" type="button">SEND</button>
 		<div id="commentList"></div>	
 	</div>
-
+	
 </body>
 </html>
+
 
 
 
