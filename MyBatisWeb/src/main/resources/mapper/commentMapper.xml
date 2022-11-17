@@ -22,5 +22,10 @@
 		delete from t_comment where cno = #{cno} and commenter = #{commenter}
 	</delete>
 	
+	<insert id="insert" parameterType="CommentDto">
+		insert into t_comment (bno,pcno,comment,commenter,reg_date,up_date)
+		values
+		(#{bno},#{pcno},#{comment},#{commenter},now(),now())
+	</insert>
 	
 </mapper>
