@@ -95,25 +95,49 @@
 	<script type="text/javascript">
 		$(document).ready(function() {			/*  main() */
 			
-			let bno = 264
+			//let bno = 264
+			let bno = $("input[name=bno]").val();
 			
-			$("#commentList").on("click",".delBtn",function(){
-				//commentList안에 있는 delBtn버튼에다가 클릭이벤트 걸어줌
-				//alert("삭제버튼 클릭됨")
-				let cno = $(this).parent().attr("data-cno")	//<li>태그는 <button>의 부모임
-				let bno = $(this).parent().attr("data-bno")	//attr 중 사용자 정의 attr을 선택함
+			$("#modBtn").click(function() {
+				//showList(bno)
+				let cno = $(this).attr("data-cno")
+				let comment = $("input[name=comment]").val();
+				
+				if(comment.trim() == '') { 
+					alert("댓글을 입력해 주세요.")
+					$("input[name=comment]").focus()
+					return
+				}
 				
 				$.ajax({
-					type : 'DELETE',
-					url : '/heart/comments/'+cno+'?bno='+bno, 
-					success : function(result){
+					type : 'PATCH',			//요청 메서드
+					url : '/heart/comments/'+cno,		//요청 URI
+					headers : { "content-type" : "application/json" }, 		//요청 헤더
+					data : JSON.stringify({cno:cno, comment:comment}),		// 서버로 전송할 데이터. stringify()로 직렬화 필요.
+					success : function(result) {		// 서버로부터 응답이 도착하면 호출될 함수
 						alert(result)
 						showList(bno)
 					},
-					error : function(){alert("error")}
+					error : function() { alert("error") }		//에러가 발생했을 때, 호출될 함수	
 				})				
-			
 			})
+			$("#commentList").on("click", ".delBtn", function() { //commentList안에 있는 delBtn버튼에다가 클릭이벤트를 등록해야함.
+				//alert("삭제 버튼 클릭됨")
+				
+				let cno = $(this).parent().attr("data-cno")		//<li>태그는 <button>의 부모임.
+				let bno = $(this).parent().attr("data-bno")		//attr중 사용자 정의 attr를 선택함.
+				
+				$.ajax({
+					type: 'DELETE',			//요청 메서드
+					url: '/heart/comments/'+cno+'?bno='+bno,		//요청 URI
+					success: function(result) {			// 서버로부터 응답이 도착하면 호출될 함수
+						alert(result)					// result 서버가 전송한 데이터 
+						showList(bno)
+					},
+					error : function() { alert("error") }	// 에러가 발생했을 때 호출될 함수
+				})
+									
+			})				
 			
 			let showList = function(bno) {
 				$.ajax({
@@ -127,15 +151,17 @@
 			}			
 			
 			let toHtml = function(comments) {
-				let tmp = "<ul style='display: block;' >"
+				let tmp = "<ul style= 'display: block;'>"
 				
 				comments.forEach(function(comment) {
-					tmp += '<li style="background-color: #f9f9fa;border-bottom:1px solid rgb(235,236,239); color:black;  width: 100%;" data-cno=' + comment.cno
+					tmp += '<li style="background-color: #f9f9fa; border-bottom: 1px solid rgb(235,236,239); color: black;  " '
+					tmp += ' data-cno=' + comment.cno
 					tmp += ' data-bno=' + comment.bno
-					tmp += ' data-pcno=' + comment.pcno +'>'
-					tmp += ' <span class="commenter" style="width:100px;">'+comment.commenter +'</span>'
-					tmp += ' <span class="comment">'+comment.comment +'</span>'
+					tmp += ' data-pcno=' + comment.pcno + '>'
+					tmp += ' commenter=<span class="commenter">' + comment.commenter + '</span>'
+					tmp += ' comment=<span class="comment">' + comment.comment + '</span>'
 					tmp += ' <button class="delBtn">삭제</button>'
+					tmp += ' <button class="modBtn">수정</button>'
 					tmp += '</li>'
 				})
 				
@@ -143,9 +169,11 @@
 				
 			}		
 			
-			$("#sendBtn").click(function() {
+			showList(bno)
+			
+/* 			$("#sendBtn").click(function() {
 				showList(bno)
-			})			
+			})	 */		
 			
 			$("#listBtn").on("click", function() {
 				location.href ="<c:url value='/board/list${searchItem.queryString}' />";

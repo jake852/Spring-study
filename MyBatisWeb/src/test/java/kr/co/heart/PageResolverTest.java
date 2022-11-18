@@ -1,5 +1,6 @@
 package kr.co.heart;
 
+import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
@@ -19,6 +20,7 @@ public class PageResolverTest {
 		assertTrue(pr.getEndPage() == 10);
 	}
 	
+	
 	@Test
 	public void test2() {
 		PageResolver pr = new PageResolver(250, 11);
@@ -29,7 +31,8 @@ public class PageResolverTest {
 		assertTrue(pr.getBeginPage() == 11);
 		assertTrue(pr.getEndPage() == 20);
 	}
-
+	
+	
 	@Test
 	public void test3() {
 		PageResolver pr = new PageResolver(255, 25);
@@ -50,8 +53,5 @@ public class PageResolverTest {
 		
 		assertTrue(pr.getBeginPage() == 1);
 		assertTrue(pr.getEndPage() == 10);
-	}
-	
-	
-	
+	}	
 }

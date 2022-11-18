@@ -12,26 +12,18 @@ import kr.co.heart.domain.BoardDto;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"file:src/main/webapp/WEB-INF/spring/**/root-context.xml"})
 public class BoardDaoImplTest2 {
-	
+
 	@Autowired
 	private BoardDao boardDao;
-
+	
 	@Test
 	public void insertDummyDataTest() throws Exception {
 		boardDao.deleteAll();
 		
-		for(int i=1; i<= 250; i++) {
-			
+		for (int i=1; i <= 250; i++) {
 			BoardDto boardDto = new BoardDto("Pioneering"+i, "Ready for Action"+i, "ezen");
 			boardDao.insert(boardDto);
-			
 		}
-		
 	}
-
-
-
-
-
-
+	
 }
