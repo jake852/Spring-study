@@ -46,7 +46,7 @@
 	
 	<sql id="searchCondition">
 		<choose>
-			<when test='option==""'>
+			<when test='option=="T"'>
 				AND title LIKE concat('%', #{keyword}, '%')
 			</when>
 			<when test='option=="W"'>
