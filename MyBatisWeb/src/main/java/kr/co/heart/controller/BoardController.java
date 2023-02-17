@@ -94,7 +94,7 @@ public class BoardController {
 	public String remove(Integer bno, Integer page, Integer pageSize, RedirectAttributes rattr, HttpSession session) {
 	      	String writer = (String) session.getAttribute("id");
 	        
-	      	String msg = "DEL_OK";
+	      	String msg = "DEL_OK";  // 메시지 력출력
 
 	        try {
 	            if(boardService.remove(bno, writer) != 1)
